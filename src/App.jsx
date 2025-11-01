@@ -442,7 +442,7 @@ export default function App() {
             {userCollection.contractNames.map((contractName, index) => (
               <div
                 key={index}
-                className="w-80 min-h-96 white-glassmorphism flex flex-col items-center justify-between p-4 shadow-lg"
+                className="w-96 h-[600px] white-glassmorphism flex flex-col items-center justify-between p-4 shadow-lg"
               >
                 <img
                   src={userCollection.medias[index]}
@@ -453,7 +453,7 @@ export default function App() {
                 <div className=" flex  gap-2 justify-start items-start flex-col">
 
                   <div className="flex justify-start">
-                    <p className="font-bold text-white mr-2">Meme Name:</p>
+                    <p className="font-bold text-white mr-2">Meme:</p>
                     <p>{contractName}</p>
                   </div>
                   <div className="flex justify-start">

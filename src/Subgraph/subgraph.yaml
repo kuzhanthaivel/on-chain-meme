@@ -1,0 +1,35 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: OnchainMemes
+    network: polygon-amoy
+    source:
+      address: "0xAc798f448c04d0B2c6924Cd954414Ef9493cEC4c"
+      abi: OnchainMemes
+      startBlock: 10460789
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ApprovalForAll
+        - TransferBatch
+        - TransferSingle
+        - URI
+      abis:
+        - name: OnchainMemes
+          file: ./abis/OnchainMemes.json
+      eventHandlers:
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: URI(string,indexed uint256)
+          handler: handleURI
+      file: ./src/onchain-memes.ts
